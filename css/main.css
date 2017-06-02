@@ -1,5 +1,6 @@
 #banner {
     height: 30vh;
+    background-color: black;
     background-image: url("../images/background.jpg");
     background-position: center;
     background-size: cover;
@@ -32,7 +33,7 @@
     font-size: 110%;
 }
 
-#parking-list {
+.list-group {
     height: 81vh;
     overflow-y: scroll;
     margin-bottom: 0;
@@ -112,4 +113,12 @@
 #load_ad button {
     margin-left: 5%;
     width: 90%;
+}
+
+#tab-colecciones h3{
+    text-align: center;
+}
+
+#newCollectionForm {
+    margin-bottom: 1vh;
 }

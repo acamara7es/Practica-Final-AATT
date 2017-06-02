@@ -11,7 +11,7 @@ function loadParkings() {
         parkings = processData(data);
         $.each(parkings, function(i, place) {
             var node = $("<li>", {
-                "class": "list-group-item",
+                "class": "list-group-item parking",
                 "tag": i
             });
             node.html(place.name);
