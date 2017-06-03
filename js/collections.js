@@ -18,6 +18,7 @@ $("#col-parkings-added").droppable({
             collections[collectionSelected].sort(function(a, b) {
                 return a - b;
             });
+            showCollections();
             showCollectionParkings(collectionSelected);
         }
     }
@@ -31,7 +32,7 @@ $("#col-disponibles").droppable({
         ui.draggable.remove();
         collections[collectionSelected].splice(index, 1);
         $(".parking[tag="+ tag + "]").removeClass("invisible");
-        setBadges();
+        showCollections();
     }
 });
 
@@ -39,6 +40,7 @@ function setBadges() {
     $("#available-parks-badge").html(parkings.length);
     $("#collections-badge").html(collections.length);
     if (collectionSelected) {
+        console.log(collectionSelected);
         var collectionParkings = collections[collectionSelected];
         $("#parks-added-badge").html(collectionParkings.length);
         $("#available-parks-badge").html(parkings.length - collectionParkings.length);
@@ -58,7 +60,7 @@ function showCollections() {
             "class": "list-group-item",
         });
         node.html(collection);
-        // node.append("") badge
+        node.append($("<span class=badge>").html(collections[collection].length));
         $("#collection-list").append(node);
     });
     addCollectionListEvents();

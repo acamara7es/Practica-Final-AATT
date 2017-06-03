@@ -74,7 +74,7 @@ $("#nav-usuarios").click(function() {
 function addCollectionListEvents() {
     $("#collection-list .list-group-item").click(function(event) {
         $("#collection-list .list-group-item").removeClass("list-group-item-info");
-        collectionSelected = $(this).html();
+        collectionSelected = $(this).html().split("<")[0];
         $(this).addClass("list-group-item-info");
         showCollectionParkings(collectionSelected);
     });
