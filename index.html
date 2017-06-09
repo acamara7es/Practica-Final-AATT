@@ -9,13 +9,14 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin="" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/base/jquery-ui.min.css">
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/base/jquery-ui.min.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/client.js?startGooglePlusApi"></script>
 </head>
 
 <body>
@@ -70,15 +71,25 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Aparcamientos</h3>
+                    <div class="bg-primary">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#parking-list" aria-controls="parking-list" role="tab">Aparcamientos</a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#collection-parking-list" aria-controls="collection-parking-list" role="tab">Colección</a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="panel-body">
                         <div id="load_ad">
                             <p>Para poder usar esta página, primero debes cargar los datos de los aparcamientos</p>
                             <button type="button" onclick="loadParkings()" class="btn btn-success">Cargar</button>
                         </div>
-                        <ul class="list-group invisible" id="parking-list"></ul>
+                        <div class="tab-content invisible">
+                            <ul role="tabpanel" class="tab-pane active list-group" id="parking-list"></ul>
+                            <div role="tabpanel" class="tab-pane" id="collection-parking-list"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,6 +115,22 @@
                     </span>
                 </div>
                 <ul class="list-group" id="collection-list"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="container invisible" id="tab-usuarios">
+        <div class="row">
+            <div class="col-lg-6" id="parkInfo"></div>
+            <div class="col-lg-6" id="usersManagent">
+                <div class="alert alert-danger invisible">El servidor de usuarios no funciona, inténtalo más tarde o añade usuarios manualmente.</div>
+                <div class="alert alert-success invisible">El servidor de usuarios está activo, puedes esperar a que aparezcan nuevos usuarios, o añadirlos tú mismo.</div>
+
+                <h3>Usuarios disponibles</h3>
+                <div class="row" id="users">
+                    <button class="btn btn-info" id="startServer">Activar<br>servidor<br>de usuarios</button>
+                </div>
+                <h3>Usuarios asignados</h3>
+                <div class="row" id="parkUsers"></div>
             </div>
         </div>
     </div>
@@ -140,10 +167,13 @@
         </div>
     </div>
 </body>
+<script src="js/prototypes.js" charset="utf-8"></script>
 <script src="js/events.js" charset="utf-8"></script>
 <script src="js/tools.js" charset="utf-8"></script>
 <script src="js/map.js" charset="utf-8"></script>
 <script src="js/script.js" charset="utf-8"></script>
 <script src="js/collections.js" charset="utf-8"></script>
+<script src="js/communications.js" charset="utf-8"></script>
+<script src="js/users.js" charset="utf-8"></script>
 
 </html>

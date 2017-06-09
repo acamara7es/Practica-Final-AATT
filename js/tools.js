@@ -1,38 +1,9 @@
-function getName(obj) {
-    var title = obj.title.split(".");
-    return title[title.length - 1].trim();
-}
-
-function getDistrict(obj) {
-    var url = obj.address.district["@id"].split("/");
-    return url[url.length - 1];
-}
-
-function getArea(obj) {
-    var url = obj.address.area["@id"].split("/");
-    return url[url.length - 1];
-}
-
-function getPostalCode(obj) {
-    return Number(obj.address["postal-code"]);
-}
-
-function getStreet(obj) {
-    return obj.address["street-address"];
-}
-
-function getLocation(obj) {
-    var latitude = Number(obj.location.latitude);
-    var longitude = Number(obj.location.longitude);
-    var l = {
-        "lat": latitude,
-        "lng": longitude
-    };
-    return l;
-}
-
-function getOthers(obj) {
-    return obj.organization["organization-desc"];
+function disableUsersTab(){
+    $("#nav-usuarios").addClass("disabled").attr({
+        "data-toggle": "tooltip",
+        "data-placement": "bottom",
+        "title": "Selecciona un aparcamiento"
+    }).tooltip();
 }
 
 function orderByName(a, b) {
@@ -71,8 +42,8 @@ function setPhotos(location) {
         "url": "https://commons.wikimedia.org/w/api.php",
         "dataType": "jsonp",
         "data": {
-            "format": "json",
             "action": "query",
+            "format": "json",
             "generator": "geosearch",
             "ggsprimary": "all",
             "ggsnamespace": 6,
@@ -111,4 +82,29 @@ function newThumbnailNode(url,i){
         thumb.addClass("active");
     }
     return $("<td>").append(thumb);
+}
+
+function changeTab(newTab,nav){
+    $("#tab-principal").addClass("invisible");
+    $("#tab-colecciones").addClass("invisible");
+    $("#tab-usuarios").addClass("invisible");
+    $(newTab).removeClass("invisible");
+    $(".nav-title").removeClass("active");
+    $(nav).addClass("active");
+}
+
+function setParkingsDraggable(){
+    $(".parking").draggable({
+        containment: $("#tab-colecciones"),
+        disabled: true,
+        helper: "clone",
+        cursor: "grabbing",
+        cursorAt: {
+            left: 5,
+            top: 21
+        },
+        zIndex: 100,
+        revert: "invalid",
+        revertDuration: 200,
+    });
 }

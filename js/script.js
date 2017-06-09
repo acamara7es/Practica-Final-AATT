@@ -2,11 +2,12 @@ var parkings = [];
 var parkingSelected = -1;
 
 function loadParkings() {
-    $("#load_ad").remove();
-    $("#parking-list").removeClass("invisible");
-    $.getJSON("/aparcamientos.json").done(function(data,error) {
-        if(error==="success"){
+    $.getJSON("/aparcamientos.json").done(function(data, error) {
+        if (error === "success") {
+            $("#load_ad").remove();
+            $("#tab-principal .tab-content").removeClass("invisible");
             $(".nav .disabled").removeClass("disabled");
+            disableUsersTab();
         }
         parkings = processData(data);
         $.each(parkings, function(i, place) {
@@ -17,30 +18,19 @@ function loadParkings() {
             node.html(place.name);
             $("#parking-list").append(node);
         });
-        console.log(parkings);
         addParkingListEvents();
     });
 }
 
 function processData(data) {
     data.sort(orderByName);
-    var processedData = [];
+    var processedParkings = [];
     $.each(data, function(i, obj) {
-        var parking = {
-            "name": getName(obj),
-            "address": {
-                "district": getDistrict(obj),
-                "area": getArea(obj),
-                "postal-code": getPostalCode(obj),
-                "street": getStreet(obj)
-            },
-            "location": getLocation(obj),
-            "others": getOthers(obj)
-        };
+        var parking = new Parking(obj);
         parking.marker = createMarker(parking, i);
-        processedData.push(parking);
+        processedParkings.push(parking);
     });
-    return processedData;
+    return processedParkings;
 }
 
 function showInfo(id) {
@@ -58,6 +48,7 @@ function showInfo(id) {
 
 }
 
+//Callback para la petición JSONP de las fotos.
 function processJSON(data) {
     $("#myCarousel .carousel-inner").empty();
     $("#slider-thumbs tr").empty();
@@ -69,7 +60,9 @@ function processJSON(data) {
         $("#slider-thumbs tr").append(thumb);
 
     });
-    $("#modalInfo").modal("show");
+    if (!$("#tab-principal").hasClass("invisible")) {
+        $("body > #modalInfo").modal("show");
+    }
     playCarousel();
 }
 
