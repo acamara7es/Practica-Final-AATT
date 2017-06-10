@@ -74,10 +74,10 @@
                     <div class="bg-primary">
                         <ul class="nav nav-tabs nav-justified" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#parking-list" aria-controls="parking-list" role="tab">Aparcamientos</a>
+                                <a href="#parking-list" aria-controls="parking-list" data-toggle="tab" role="tab">Aparcamientos</a>
                             </li>
-                            <li role="presentation" class="disabled">
-                                <a href="#collection-parking-list" aria-controls="collection-parking-list" role="tab">Colección</a>
+                            <li role="presentation">
+                                <a href="#collection-parking-list" aria-controls="collection-parking-list" data-toggle="tab" role="tab">Colección</a>
                             </li>
                         </ul>
                     </div>
@@ -88,7 +88,10 @@
                         </div>
                         <div class="tab-content invisible">
                             <ul role="tabpanel" class="tab-pane active list-group" id="parking-list"></ul>
-                            <div role="tabpanel" class="tab-pane" id="collection-parking-list"></div>
+                            <div role="tabpanel" class="tab-pane" id="collection-parking-list">
+                                <p id="collection_ad">Debe seleccionar una colección en la pestaña Colecciones para poder
+                                ver aquí las instalaciones asociadas a la misma.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

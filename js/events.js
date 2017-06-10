@@ -27,14 +27,19 @@ function addPopupEvents() {
     $(".leaflet-popup-content .btn-danger").click(function() {
         var tag = Number($(this).attr("tag"));
         var parking = $("#parking-list").children()[tag];
+        if(collectionSelected && collections[collectionSelected].includes(tag)){
+            parking = $("#added-list li[tag=" + tag + "]");
+        }
         removeMarker(tag);
         $(parking).removeClass("list-group-item-info");
     });
 }
 
-$("#nav-principal").click(function() {
+$("#nav-principal").click(function(e) {
+    e.preventDefault();
     if (!$("#nav-principal").hasClass("active")) {
         if(collectionSelected){
+            $("#collection_ad").remove();
             $("#added-list").appendTo($("#collection-parking-list"));
             $(".added").draggable("disable");
             $("#added-list li").addClass("parking");
@@ -47,7 +52,8 @@ $("#nav-principal").click(function() {
     }
 });
 
-$("#nav-colecciones").click(function() {
+$("#nav-colecciones").click(function(e) {
+    e.preventDefault();
     if (!$("#nav-colecciones").hasClass("active") && !$("#nav-colecciones").hasClass("disabled")) {
         if($("#tab-principal").has($("#added-list")).length){
             $("#tab-principal #added-list").appendTo($("#col-parkings-added"));
@@ -60,7 +66,8 @@ $("#nav-colecciones").click(function() {
         setBadges();
     }
 });
-$("#nav-usuarios").click(function() {
+$("#nav-usuarios").click(function(e) {
+    e.preventDefault();
     if (!$("#nav-usuarios").hasClass("active") && !$("#nav-usuarios").hasClass("disabled")) {
         changeTab("#tab-usuarios",this);
         showInfoInUsersTab();
