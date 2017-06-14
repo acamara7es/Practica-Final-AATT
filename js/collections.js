@@ -77,6 +77,9 @@ function showCollectionParkings(collection) {
             "tag": park,
             html: parkings[park].name
         });
+        if(markers.includes(park)){
+            node.append($("<span class='glyphicon glyphicon-map-marker'>"));
+        }
         $("#added-list").append(node);
     });
     $(".added").draggable({

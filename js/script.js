@@ -28,6 +28,9 @@ function processData(data) {
     $.each(data, function(i, obj) {
         var parking = new Parking(obj);
         parking.marker = createMarker(parking, i);
+        parking.marker.on("click",function(e){
+            $(".list-group-item[tag=" + i  + "]").click();
+        });
         processedParkings.push(parking);
     });
     return processedParkings;
