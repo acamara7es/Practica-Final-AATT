@@ -2,15 +2,16 @@ var apiKey = "AIzaSyCmLE0CXrcYwlIEfF1nT2PwWWW76c-85_w";
 var socket = null;
 
 
-function startGooglePlusApi(userId) {
+function startGooglePlusApi() {
     gapi.client.setApiKey(apiKey);
+    console.log("Google+ API cargada");
 }
 
 
 function startWebSocket() {
     try {
-        startGooglePlusApi();
-        var host = "ws://localhost:10000/";
+        $("#tab-usuarios .alert-warning").removeClass("invisible");
+        var host = "ws://localhost:10000";
         socket = new WebSocket(host);
         socket.onopen = function(e) {
             serverUp();
@@ -51,10 +52,13 @@ $("#startServer").click(function(event){
 
 function serverUp() {
     $("#tab-usuarios .alert-danger").addClass("invisible");
+    $("#tab-usuarios .alert-warning").addClass("invisible");
     $("#tab-usuarios .alert-success").removeClass("invisible");
 }
 
 function serverDown() {
+    $("#tab-usuarios .alert-warning").addClass("invisible");
     $("#tab-usuarios .alert-success").addClass("invisible");
     $("#tab-usuarios .alert-danger").removeClass("invisible");
+    $("#startServer").removeClass("invisible");
 }

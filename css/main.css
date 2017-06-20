@@ -164,3 +164,7 @@ h3 {
     font-size: 1.2em;
     color: dodgerblue;
 }
+
+.input-group{
+    margin-bottom: 20px;
+}

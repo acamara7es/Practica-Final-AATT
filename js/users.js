@@ -1,4 +1,4 @@
-var usersReceived = [];
+var usersReceived = {};
 var asociatedUsers = {};
 
 function showInfoInUsersTab() {
@@ -20,19 +20,12 @@ function showInfoInUsersTab() {
 }
 
 function addUser(resp) {
-    if (!usersReceived.includes(resp.id.toString())) {
-        usersReceived.push(resp.id.toString());
+    if (!usersReceived[resp.id.toString()]) {
         //Profile pictures are only 50x50 px, I want bigger images
         var url = resp.image.url.split("=")[0].concat("=80");
-        $("<img>").attr({
-            "src": url,
-            "id": resp.id,
-            "class": "img-circle user available",
-            "data-toggle": "tooltip",
-            "data-placement": "top",
-            "title": resp.displayName
-        }).appendTo($("#users"));
-        setUsersDrag();
+        var user = {"id":resp.id.toString(),"url": url,"name":resp.displayName};
+        usersReceived[resp.id.toString()] = user;
+        setUserPhoto(user);
     }
 }
 
@@ -91,4 +84,25 @@ function setUsersDrag() {
         revert: "invalid",
         revertDuration: 200,
     });
+}
+
+function restoreUsers(users){
+    $.each(users,function(i,value){
+        setUserPhoto(value);
+    });
+    if(parkingSelected!==-1){
+        showParkingUsers(parkings[parkingSelected]);
+    }
+}
+
+function setUserPhoto(user){
+    $("<img>").attr({
+        "src": user.url,
+        "id": user.id,
+        "class": "img-circle user available",
+        "data-toggle": "tooltip",
+        "data-placement": "top",
+        "title": user.name
+    }).appendTo($("#users"));
+    setUsersDrag();
 }
