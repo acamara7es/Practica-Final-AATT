@@ -1,7 +1,7 @@
 var collections = {};
 var collectionSelected = null;
 
-$.getJSON("/default-collections.json").done(function(data, error) {
+$.getJSON("default-collections.json").done(function(data, error) {
     if (error === "success") {
         collections = data;
         showCollections();

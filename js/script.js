@@ -2,7 +2,7 @@ var parkings = [];
 var parkingSelected = -1;
 
 function loadParkings() {
-    $.getJSON("/aparcamientos.json").done(function(data, error) {
+    $.getJSON("aparcamientos.json").done(function(data, error) {
         if (error === "success") {
             $("#load_ad").remove();
             $("#tab-principal .tab-content").removeClass("invisible");
