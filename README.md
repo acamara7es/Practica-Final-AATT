@@ -17,7 +17,7 @@
    - Los usuarios de Google+ aparecen con su foto y al pasar el ratón por encima se ve el nombre.
 
 ## Funcionalidades opcionales que se hayan implementado, y breve descripción de cada una.
-
+-  He adaptado el servidor de usuarios de Google+ para que funcione desde la plataforma Heroku y que esté disponible sin tener que arrancar el servidor en local.
 
 ## Enlace a los vídeos
 Demostración de la funcionalidad básica

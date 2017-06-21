@@ -11,8 +11,8 @@ function startGooglePlusApi() {
 function startWebSocket() {
     try {
         $("#tab-usuarios .alert-warning").removeClass("invisible");
-        var host = "ws://localhost:10000";
-        socket = new WebSocket(host);
+        var host = "wss://shielded-cove-96281.herokuapp.com/users";
+        socket = new ReconnectingWebSocket(host);
         socket.onopen = function(e) {
             serverUp();
         };
