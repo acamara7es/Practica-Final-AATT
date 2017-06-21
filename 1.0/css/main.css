@@ -1,0 +1,170 @@
+#banner {
+    height: 30vh;
+    background-color: black;
+    background-image: url("../images/background.jpg");
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    margin: auto;
+}
+
+#banner img {
+    height: 15vh;
+    margin-top: 5vh;
+}
+
+#banner p {
+    font-family: 'Barrio', cursive;
+    font-size: 5vh;
+    color: white;
+}
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+.navbar-brand img {
+    max-height: 100%;
+}
+
+.navbar-btn {
+    margin-right: 4px;
+    font-size: 110%;
+}
+
+.list-group {
+    height: 81vh;
+    overflow-y: scroll;
+    margin-bottom: 0;
+}
+
+#map {
+    height: 86vh;
+}
+
+.panel-body {
+    padding: 0;
+    padding-bottom: 1px;
+}
+
+.leaflet-popup-content .btn {
+    margin: 3px;
+}
+
+.leaflet-popup-content {
+    text-align: center;
+}
+
+#postal-code {
+    padding-left: 19px;
+}
+
+#slider-thumbs {
+    overflow-x: scroll;
+}
+
+#slider-thumbs img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px;
+}
+
+#slider-thumbs img.active {
+    background-color: orange;
+}
+
+#myCarousel img {
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 300px;
+}
+
+.hide-bullets {
+    list-style: none;
+    margin-left: -40px;
+    margin-top: 20px;
+}
+
+#address, #area, #desc {
+    padding-left: 5px;
+}
+
+.invisible {
+    display: none;
+}
+
+#load_ad,
+#collection_ad {
+    height: 81vh;
+}
+
+#load_ad p,
+#collection_ad {
+    text-align: center;
+    color: #aaa;
+    padding: 0 20px;
+    padding-top: 23vh;
+    font-size: 20px;
+}
+
+#load_ad button {
+    margin-left: 5%;
+    width: 90%;
+}
+
+h3 {
+    text-align: center;
+}
+
+#newCollectionForm {
+    margin-bottom: 1vh;
+}
+
+#users, #parkUsers {
+    height: 210px;
+    padding-left: 3px;
+    border-color: #bbb;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+    overflow-y: scroll;
+}
+
+#tab-usuarios .img-circle{
+    margin: 5px;
+    widows: 80px;
+}
+
+#startServer{
+    margin: 5px;
+    height: 80px;
+    width: 80px;
+    font-size: 90%;
+    padding: 0;
+    border-radius: 40px;
+}
+
+.nav-tabs li a {
+    color: white;
+}
+.nav-tabs .active a{
+    color: #337ab7;
+    background-color: white;
+}
+
+.nav-tabs li a:hover{
+    color: #23527c;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: #337ab7;
+}
+
+.glyphicon-map-marker{
+    float: right;
+    font-size: 1.2em;
+    color: dodgerblue;
+}
+
+.input-group{
+    margin-bottom: 20px;
+}

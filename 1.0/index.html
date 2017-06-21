@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="es-es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Aparcamientos de Madrid</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/github-api/dist/GitHub.bundle.js" async defer></script>
+    <script src="https://apis.google.com/js/client.js?onload=startGooglePlusApi" async defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid" id="banner">
+            <img src="images/logo.png" />
+            <p>Aparcamientos de Madrid</p>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand"><img src="images/logo.png" /></a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="nav-principal" class="nav-title active"><a href="#">Principal</a></li>
+                        <li id="nav-colecciones" class="nav-title disabled"><a href="#">Colecciones</a></li>
+                        <li id="nav-usuarios" class="nav-title disabled"><a href="#">Usuarios</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <button id="save-data" type="button" class="btn btn-default navbar-btn disabled">
+                                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                                Guardar datos
+                            </button>
+                        </li>
+                        <li>
+                            <button id="load-data" type="button" class="btn btn-default navbar-btn disabled">
+                                <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                Cargar datos
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+    </header>
+    <div class="container-fluid" id="tab-principal">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="panel panel-primary">
+                    <div class="bg-primary">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#parking-list" aria-controls="parking-list" data-toggle="tab" role="tab">Aparcamientos</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#collection-parking-list" aria-controls="collection-parking-list" data-toggle="tab" role="tab">Colección</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div id="load_ad">
+                            <p>Para poder usar esta página, primero debes cargar los datos de los aparcamientos</p>
+                            <button type="button" onclick="loadParkings()" class="btn btn-success">Cargar</button>
+                        </div>
+                        <div class="tab-content invisible">
+                            <ul role="tabpanel" class="tab-pane active list-group" id="parking-list"></ul>
+                            <div role="tabpanel" class="tab-pane" id="collection-parking-list">
+                                <p id="collection_ad">Debe seleccionar una colección en la pestaña Colecciones para poder ver aquí las instalaciones asociadas a la misma.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9" id="map"></div>
+        </div>
+    </div>
+    <div class="container invisible" id="tab-colecciones">
+        <div class="row">
+            <div class="col-lg-4" id="col-disponibles">
+                <h3>Parkings disponibles <span class="badge" id="available-parks-badge"></span></h3>
+            </div>
+            <div class="col-lg-4" id="col-parkings-added">
+                <h3>Parkings en la colección <span class="badge" id="parks-added-badge"></span></h3>
+                <ul class="list-group invisible" id="added-list"></ul>
+            </div>
+            <div class="col-lg-4" id="col-colecciones">
+                <h3>Colecciones <span class="badge" id="collections-badge"></span>
+                </h3>
+                <div id="newCollectionForm" class="input-group">
+                    <input type="text" class="form-control" placeholder="Nombre">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button">Añadir</button>
+                    </span>
+                </div>
+                <ul class="list-group" id="collection-list"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="container invisible" id="tab-usuarios">
+        <div class="row">
+            <div class="col-lg-6" id="parkInfo"></div>
+            <div class="col-lg-6" id="usersManagent">
+                <div class="alert alert-danger invisible">El servidor de usuarios no funciona, inténtalo más tarde o añade usuarios manualmente.</div>
+                <div class="alert alert-success invisible">El servidor de usuarios está activo, puedes esperar a que aparezcan nuevos usuarios, o añadirlos tú mismo.</div>
+                <div class="alert alert-warning invisible">Conectando con el servidor, puede tardar unos segundos&hellip;</div>
+
+                <h3>Usuarios disponibles</h3>
+                <div class="row" id="users">
+                    <button class="btn btn-info" id="startServer">Activar<br>servidor<br>de usuarios</button>
+                </div>
+                <h3>Usuarios asignados</h3>
+                <div class="row" id="parkUsers"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalInfo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="title"></h3>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p><span class="glyphicon glyphicon-home"></span><span id="address"></span></p>
+                        <p><span class="glyphicon glyphicon-flag"></span><span id="area"></span></p>
+                        <p><span class="glyphicon glyphicon-info-sign"></span><span id="desc"></span></p>
+                    </div>
+                    <div class="carousel slide" id="myCarousel">
+                        <div class="carousel-inner"></div>
+                        <!-- Carousel nav -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span></a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+                    <div id="slider-thumbs">
+                        <table>
+                            <tr></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="githubModal" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title">Guardar datos</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="githubExportForm">
+                        <div class="alert alert-warning invisible">Todos los campos son obligatorios</div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="tokenTitle">Token</span>
+                            <input name="token" type="password" class="form-control" placeholder="Tu token de GitHub" aria-describedby="tokenTitle">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="userTitle">Usuario</span>
+                                    <input name="user" type="text" class="form-control" aria-describedby="userTitle">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="repoTitle">Repositorio</span>
+                                    <input name="repo" type="text" class="form-control" aria-describedby="repoTitle">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="fileTitle">Fichero</span>
+                            <input name="file" type="text" class="form-control" placeholder="parkingsData.json" aria-describedby="fileTitle">
+                        </div>
+                        <div id="commitInput" class="input-group">
+                            <span class="input-group-addon" id="commitTitle">Commit</span>
+                            <input name="commit" type="text" class="form-control" placeholder="Guardar datos de aparcamientos" aria-describedby="commitTitle">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+</body>
+<script src="js/prototypes.js" charset="utf-8"></script>
+<script src="js/communications.js" charset="utf-8"></script>
+<script src="js/events.js" charset="utf-8"></script>
+<script src="js/tools.js" charset="utf-8"></script>
+<script src="js/map.js" charset="utf-8"></script>
+<script src="js/script.js" charset="utf-8"></script>
+<script src="js/collections.js" charset="utf-8"></script>
+<script src="js/users.js" charset="utf-8"></script>
+<script src="js/github.js" charset="utf-8"></script>
+
+</html>
