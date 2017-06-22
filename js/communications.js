@@ -31,7 +31,7 @@ function getGPlusUser(userId) {
     gapi.client.load('plus', 'v1', function() {
         var user_request = gapi.client.plus.people.get({
             'userId': userId,
-            'fields': "displayName,id,image/url"
+            'fields': "displayName,id,image/url,url"
         });
         user_request.execute(function(resp) {
             if (!resp.error) {

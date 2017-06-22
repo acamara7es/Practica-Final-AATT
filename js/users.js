@@ -22,8 +22,8 @@ function showInfoInUsersTab() {
 function addUser(resp) {
     if (!usersReceived[resp.id.toString()]) {
         //Profile pictures are only 50x50 px, I want bigger images
-        var url = resp.image.url.split("=")[0].concat("=80");
-        var user = {"id":resp.id.toString(),"url": url,"name":resp.displayName};
+        var photoUrl = resp.image.url.split("=")[0].concat("=80");
+        var user = {"id":resp.id.toString(),"url": photoUrl,"name":resp.displayName,"profile": resp.url};
         usersReceived[resp.id.toString()] = user;
         setUserPhoto(user);
     }
@@ -96,7 +96,7 @@ function restoreUsers(users){
 }
 
 function setUserPhoto(user){
-    $("<img>").attr({
+    var photo = $("<img>").attr({
         "src": user.url,
         "id": user.id,
         "class": "img-circle user available",
@@ -104,6 +104,9 @@ function setUserPhoto(user){
         "data-placement": "top",
         "title": user.name
     }).appendTo($("#users"));
+    photo.click(function(){
+        window.open(user.profile,"_blank");
+    });
     setUsersDrag();
 }
 
