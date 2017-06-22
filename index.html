@@ -128,7 +128,20 @@
                 <div class="alert alert-success invisible">El servidor de usuarios está activo, puedes esperar a que aparezcan nuevos usuarios, o añadirlos tú mismo.</div>
                 <div class="alert alert-warning invisible">Conectando con el servidor, puede tardar unos segundos&hellip;</div>
 
-                <h3>Usuarios disponibles</h3>
+                <h3>Usuarios disponibles
+                    <button class="btn-circle btn-primary" data-toggle="collapse" data-target="#addUser" aria-expanded="false" aria-controls="addUser">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </h3>
+                <div class="collapse" id="addUser">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="addUserTitle">Id</span>
+                        <input type="text" class="form-control" placeholder="Ej: 116651741222993143554 o +SundarPichai" aria-describedby="addUserTitle">
+                        <span class="input-group-btn">
+                              <button class="btn btn-danger" type="button">Añadir</button>
+                        </span>
+                    </div>
+                </div>
                 <div class="row" id="users">
                     <button class="btn btn-info" id="startServer">Activar<br>servidor<br>de usuarios</button>
                 </div>
@@ -169,7 +182,6 @@
             </div>
         </div>
     </div>
-
     <div id="githubModal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

@@ -106,3 +106,8 @@ function setUserPhoto(user){
     }).appendTo($("#users"));
     setUsersDrag();
 }
+
+$("#addUser button").click(function(){
+    var user = $("#addUser input").val();
+    getGPlusUser(user);
+});
