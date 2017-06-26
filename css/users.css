@@ -1,0 +1,42 @@
+#users, #parkUsers {
+    height: 210px;
+    padding-left: 3px;
+    border-color: #bbb;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+    overflow-y: scroll;
+}
+
+#startServer {
+    margin: 5px;
+    height: 80px;
+    width: 80px;
+    font-size: 90%;
+    padding: 0;
+    border-radius: 40px;
+}
+
+#addUser .form-control:focus {
+    border-color: #d9534f;
+    /* @brand-danger */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.img-circle {
+    margin: 5px;
+    width: 80px;
+}

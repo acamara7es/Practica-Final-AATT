@@ -1,5 +1,4 @@
-[
-    {
+[{
         "@id": "http://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/13470-aparcamiento-mixto-arquitecto-ribera",
         "@type": "http://datos.madrid.es/egob/kos/entidadesYorganismos/AparcamientosResidentes",
         "id": "13470",
@@ -115,7 +114,7 @@
             "organization-name": "Aparcamiento mixto. Casino de la Reina"
         }
     },
-	{
+    {
         "@id": "http://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/13477-aparcamiento-mixto-condesa-gavia",
         "@type": "http://datos.madrid.es/egob/kos/entidadesYorganismos/AparcamientosResidentes",
         "id": "13477",
@@ -2560,7 +2559,7 @@
         "address": {
             "locality": "MADRID",
             "postal-code": "28047",
-            "district":{
+            "district": {
                 "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Carabanchel"
             },
             "area": {
@@ -2676,10 +2675,10 @@
         "address": {
             "locality": "MADRID",
             "postal-code": "28002",
-            "district":{
-                "@id":"http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Chamartin"
+            "district": {
+                "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Chamartin"
             },
-            "area":{
+            "area": {
                 "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Chamartin/Barrio/Prosperidad"
             },
             "street-address": "CALLE CORAZON DE MARIA "
@@ -2945,8 +2944,8 @@
             "postal-code": "28011",
             "street-address": "CALLE El Greco 29"
         },
-        "location":{
-            "latitude":40.407152,
+        "location": {
+            "latitude": 40.407152,
             "longitude": -3.747289
         },
         "organization": {
@@ -3691,7 +3690,7 @@
         "address": {
             "locality": "MADRID",
             "postal-code": "28009",
-            "district":{
+            "district": {
                 "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Salamanca"
             },
             "area": {
@@ -3723,7 +3722,7 @@
             "district": {
                 "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Carabanchel"
             },
-            "area":{
+            "area": {
                 "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Carabanchel/Barrio/Comillas"
             },
             "street-address": "CALLE GUADALETE 132 POSTERIOR"
@@ -4503,10 +4502,10 @@
         "address": {
             "locality": "MADRID",
             "postal-code": "28026",
-            "district":{
+            "district": {
                 "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Usera"
             },
-            "area":{
+            "area": {
                 "@id": "http://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Usera/Barrio/Moscardo"
             },
             "street-address": "CALLE MANUEL NOYA 2 (JARDINES)"
@@ -7643,7 +7642,7 @@
             "postal-code": "28017",
             "street-address": "CALLE VITAL AZA 10"
         },
-        "location":{
+        "location": {
             "latitude": 40.430862,
             "longitude": -3.644322
         },

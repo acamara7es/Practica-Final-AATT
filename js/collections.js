@@ -31,7 +31,7 @@ $("#col-disponibles").droppable({
         var index = collections[collectionSelected].indexOf(tag);
         ui.draggable.remove();
         collections[collectionSelected].splice(index, 1);
-        $(".parking[tag="+ tag + "]").removeClass("invisible");
+        $(".parking[tag=" + tag + "]").removeClass("invisible");
         showCollections();
     }
 });
@@ -50,10 +50,10 @@ function setBadges() {
 function showCollections() {
     $("#collection-list").empty();
     var collectionNames = Object.keys(collections);
-    collectionNames.sort(function(a,b){
+    collectionNames.sort(function(a, b) {
         var A = a.toLocaleUpperCase();
         var B = b.toLocaleUpperCase();
-        return  A.localeCompare(B);
+        return A.localeCompare(B);
     });
     $.each(collectionNames, function(i, collection) {
         var node = $("<li>", {
@@ -77,7 +77,7 @@ function showCollectionParkings(collection) {
             "tag": park,
             html: parkings[park].name
         });
-        if(markers.includes(park)){
+        if (markers.includes(park)) {
             node.append($("<span class='glyphicon glyphicon-map-marker'>"));
         }
         $("#added-list").append(node);
@@ -86,7 +86,7 @@ function showCollectionParkings(collection) {
         containment: $("#tab-colecciones"),
         helper: "clone",
         cursor: "grabbing",
-        cursorAt:{
+        cursorAt: {
             left: 5,
             top: 21
         },
