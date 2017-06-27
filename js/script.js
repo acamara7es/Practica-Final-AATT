@@ -17,7 +17,7 @@ function loadParkings() {
 				if (i !== parkings.length - 1) {
 					parkJSON = parkJSON.concat(str, ",");
 				} else {
-					parkJSON = parkJSON.concat(str,"]");
+					parkJSON = parkJSON.concat(str, "]");
 				}
 			});
 			localStorage.setItem("parkings", parkJSON);
@@ -31,7 +31,7 @@ function processData(data, localStoraged) {
 	}
 	var processedParkings = [];
 	$.each(data, function(i, obj) {
-		var parking = new Parking(obj,localStoraged);
+		var parking = new Parking(obj, localStoraged);
 		parking.marker = createMarker(parking, i);
 		parking.marker.on("click", function(e) {
 			$(".list-group-item[tag=" + i + "]").click();

@@ -25,7 +25,7 @@
 
 - Para mejorar el rendimiento, a la hora de obtener las fotos de las ubicaciones de los aparcamientos, en lugar de cargar las imágenes originales (en algunos casos de más de 3000x2000 píxeles) modifico las url de las miniaturas para obtener una "miniatura más grande"  de máximo 500 píxeles de ancho/alto. En el caso que comentaba, la _imagen miniaturizada_ ocupa **50 veces menos que la original** (3.9 MB vs 79.5 KB).
 
-- Para mejorar el rendimiento en la carga de la web he minimizado el css y el javascript de forma que ahora se encuentran recopilados en sendos archivos (_style.min.css_ y _script.min.js_) ahorrando varias conexiones con el servidor y un 34% y un 21% de datos respectivamente.
+- Para mejorar el rendimiento en la carga de la web he minimizado el css y el javascript de forma que ahora se encuentran recopilados en sendos archivos (_style.min.css_ y _script.min.js_) ahorrando varias conexiones con el servidor y un 34% y un 23% de datos respectivamente.
 
 - Uso LocalStorage para almacenar los datos de los parkings una vez cargados por primera vez en el navegador.
 

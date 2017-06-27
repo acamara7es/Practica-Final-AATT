@@ -1,23 +1,17 @@
 @media (max-width: 767px) {
-    .list-group, #load_ad, #collection_ad{
+    .list-group, #load_ad, #collection_ad {
         height: 35vh;
     }
-    #map{
+    #map {
         height: 70vh;
     }
     #load_ad p, #collection_ad {
         padding-top: 6vh;
     }
-
-    .list-group-item{
+    .list-group-item {
         margin-right: 20px;
     }
-
-    #parkInfo #myCarousel img{
+    #parkInfo #myCarousel img {
         max-height: 200px;
     }
-
-
-
-
 }

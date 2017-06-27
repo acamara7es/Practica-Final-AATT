@@ -1,4 +1,4 @@
-var apiKey = "AIzaSyCmLE0CXrcYwlIEfF1nT2PwWWW76c-85_w";
+var apiKey = "AIzaSyCmLE0CXrcYwlIEfF1nT2PwWWW76c-85_w"; //Only works on acamara7es.github.io domain
 var socket = null;
 
 

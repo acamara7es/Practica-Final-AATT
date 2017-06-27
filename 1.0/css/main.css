@@ -94,13 +94,11 @@
     display: none;
 }
 
-#load_ad,
-#collection_ad {
+#load_ad, #collection_ad {
     height: 81vh;
 }
 
-#load_ad p,
-#collection_ad {
+#load_ad p, #collection_ad {
     text-align: center;
     color: #aaa;
     padding: 0 20px;
@@ -131,12 +129,12 @@ h3 {
     overflow-y: scroll;
 }
 
-#tab-usuarios .img-circle{
+#tab-usuarios .img-circle {
     margin: 5px;
     widows: 80px;
 }
 
-#startServer{
+#startServer {
     margin: 5px;
     height: 80px;
     width: 80px;
@@ -148,23 +146,24 @@ h3 {
 .nav-tabs li a {
     color: white;
 }
-.nav-tabs .active a{
+
+.nav-tabs .active a {
     color: #337ab7;
     background-color: white;
 }
 
-.nav-tabs li a:hover{
+.nav-tabs li a:hover {
     color: #23527c;
     background-color: rgba(255, 255, 255, 0.5);
     border-color: #337ab7;
 }
 
-.glyphicon-map-marker{
+.glyphicon-map-marker {
     float: right;
     font-size: 1.2em;
     color: dodgerblue;
 }
 
-.input-group{
+.input-group {
     margin-bottom: 20px;
 }
