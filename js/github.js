@@ -56,25 +56,29 @@ function read(error, result) {
 }
 
 $("#save-data").click(function() {
-	$("#githubModal .alert").addClass("invisible");
-	$("#githubModal h3").html("Guardar datos");
-	$("#githubModal #commitInput").removeClass("invisible");
-	$("#githubModal").modal("show");
-	$("#githubModal button.btn-success").html("Guardar").click(function(e) {
-		e.preventDefault();
-		getGithubFormData("save");
-	});
+	if (!this.hasClass("disabled")) {
+		$("#githubModal .alert").addClass("invisible");
+		$("#githubModal h3").html("Guardar datos");
+		$("#githubModal #commitInput").removeClass("invisible");
+		$("#githubModal").modal("show");
+		$("#githubModal button.btn-success").html("Guardar").click(function(e) {
+			e.preventDefault();
+			getGithubFormData("save");
+		});
+	}
 });
 
 $("#load-data").click(function() {
-	$("#githubModal .alert").addClass("invisible");
-	$("#githubModal h3").html("Cargar datos");
-	$("#githubModal #commitInput").addClass("invisible");
-	$("#githubModal").modal("show");
-	$("#githubModal button.btn-success").html("Cargar").click(function(e) {
-		e.preventDefault();
-		getGithubFormData("load");
-	});
+	if (!this.hasClass("disabled")) {
+		$("#githubModal .alert").addClass("invisible");
+		$("#githubModal h3").html("Cargar datos");
+		$("#githubModal #commitInput").addClass("invisible");
+		$("#githubModal").modal("show");
+		$("#githubModal button.btn-success").html("Cargar").click(function(e) {
+			e.preventDefault();
+			getGithubFormData("load");
+		});
+	}
 });
 
 function hideModal() {

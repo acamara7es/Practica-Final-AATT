@@ -1,5 +1,7 @@
 # X-Nav-Practica-Aparcamientos
-[Acceso a la aplicación](https://acamara7es.github.io/X-Nav-Practica-Aparcamientos)
+[Acceso a la aplicación básica](https://acamara7es.github.io/X-Nav-Practica-Aparcamientos/1.0)
+[Acceso a la aplicación con optativas](https://acamara7es.github.io/X-Nav-Practica-Aparcamientos)
+
 
 ## Datos personales
 - **Nombre:** Ángel Cámara Redondo
@@ -29,9 +31,9 @@
 
 - Uso LocalStorage para almacenar los datos de los parkings una vez cargados por primera vez en el navegador.
 
-- Permite el uso en móviles (css adaptado y se pueden _arrastrar_ los objetos que se pedían).
+- Diseño y funcionalidad adaptado para móviles (se pueden _arrastrar_ los objetos que se pedían con el plugin "_touch punch_" de jQueryUI).
 
 ## Enlace a los vídeos
-Demostración de la funcionalidad básica
+Demostración de la funcionalidad básica: [https://youtu.be/fGDqPDch5xA](https://youtu.be/fGDqPDch5xA)
 
-Demostración de la funcionalidad optativa
+Demostración de la funcionalidad optativa: [https://youtu.be/ej2NacHx3fo](https://youtu.be/ej2NacHx3fo)

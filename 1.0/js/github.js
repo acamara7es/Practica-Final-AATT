@@ -56,6 +56,7 @@ function read(error, result) {
 }
 
 $("#save-data").click(function() {
+	if (!$(this).hasClass("disabled")) break;
 	$("#githubModal .alert").addClass("invisible");
 	$("#githubModal h3").html("Guardar datos");
 	$("#githubModal #commitInput").removeClass("invisible");
@@ -64,9 +65,11 @@ $("#save-data").click(function() {
 		e.preventDefault();
 		getGithubFormData("save");
 	});
+
 });
 
 $("#load-data").click(function() {
+	if (!$(this).hasClass("disabled")) break;
 	$("#githubModal .alert").addClass("invisible");
 	$("#githubModal h3").html("Cargar datos");
 	$("#githubModal #commitInput").addClass("invisible");
