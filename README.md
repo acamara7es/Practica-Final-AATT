@@ -21,6 +21,7 @@
 
 ## Funcionalidades opcionales que se hayan implementado, y breve descripción de cada una.
 -  He adaptado el servidor de usuarios de Google+ para que funcione desde la plataforma Heroku y que esté disponible sin tener que arrancar el servidor en local.
+  - Lo necesario para lanzar el servidor está en la carpeta _server_.
 
 - Es posible añadir usuarios de Google+ a través de su id o +NombreDeUsuario.
 
